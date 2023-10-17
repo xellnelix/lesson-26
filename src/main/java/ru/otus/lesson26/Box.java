@@ -3,9 +3,10 @@ package ru.otus.lesson26;
 import ru.otus.lesson26.fruit.Fruit;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Box<T extends Fruit> {
-	private final ArrayList<T> fruits;
+	private final List<T> fruits;
 
 	public void addFruit(T fruit) {
 		fruits.add(fruit);
@@ -28,7 +29,7 @@ public class Box<T extends Fruit> {
 	}
 
 	public void replaceFruits(Box<? super T> another) {
-		if (another.fruits.equals(this.fruits)) {
+		if (another == null || another == this) {
 			return;
 		}
 		another.fruits.addAll(this.fruits);
